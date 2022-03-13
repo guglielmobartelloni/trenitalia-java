@@ -1,5 +1,5 @@
 
-package trenitalia.response.objects;
+package trenitalia.response.objects.autocomplete;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
