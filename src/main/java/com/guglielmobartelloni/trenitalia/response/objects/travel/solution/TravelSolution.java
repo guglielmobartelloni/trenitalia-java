@@ -1,5 +1,5 @@
 
-package trenitalia.response.objects.travel.solution;
+package com.guglielmobartelloni.trenitalia.response.objects.travel.solution;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

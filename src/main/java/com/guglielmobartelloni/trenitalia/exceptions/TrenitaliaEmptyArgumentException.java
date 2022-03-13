@@ -1,4 +1,4 @@
-package trenitalia.exceptions;
+package com.guglielmobartelloni.trenitalia.exceptions;
 
 public class TrenitaliaEmptyArgumentException extends RuntimeException {
     public TrenitaliaEmptyArgumentException() {

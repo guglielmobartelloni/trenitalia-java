@@ -1,5 +1,5 @@
 
-package trenitalia.response.objects.travel.solution;
+package com.guglielmobartelloni.trenitalia.response.objects.travel.solution;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

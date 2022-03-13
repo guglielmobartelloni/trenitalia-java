@@ -1,11 +1,11 @@
-package trenitalia;
+package com.guglielmobartelloni.trenitalia;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
-import trenitalia.exceptions.TrenitaliaEmptyArgumentException;
-import trenitalia.exceptions.TrenitaliaResponseException;
-import trenitalia.response.objects.autocomplete.AutocompletedStation;
-import trenitalia.response.objects.travel.solution.TravelSolution;
+import com.guglielmobartelloni.trenitalia.exceptions.TrenitaliaEmptyArgumentException;
+import com.guglielmobartelloni.trenitalia.exceptions.TrenitaliaResponseException;
+import com.guglielmobartelloni.trenitalia.response.objects.autocomplete.AutocompletedStation;
+import com.guglielmobartelloni.trenitalia.response.objects.travel.solution.TravelSolution;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

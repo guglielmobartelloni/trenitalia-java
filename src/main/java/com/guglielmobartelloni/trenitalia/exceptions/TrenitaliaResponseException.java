@@ -1,4 +1,4 @@
-package trenitalia.exceptions;
+package com.guglielmobartelloni.trenitalia.exceptions;
 
 
 import kong.unirest.HttpResponse;
