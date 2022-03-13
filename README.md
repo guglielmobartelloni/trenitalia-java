@@ -1,2 +1,4 @@
-# trenitalia-java
+# Trenitalia Java Library
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 A library to comunicate with Trenitalia's apis
