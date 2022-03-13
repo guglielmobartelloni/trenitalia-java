@@ -1,7 +1,9 @@
 package trenitalia;
 
+import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import trenitalia.exceptions.TrenitaliaEmptyArgumentException;
+import trenitalia.exceptions.TrenitaliaResponseException;
 import trenitalia.response.objects.autocomplete.AutocompletedStation;
 import trenitalia.response.objects.travel.solution.TravelSolution;
 
@@ -9,7 +11,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Trenitalia {
 
@@ -27,8 +31,8 @@ public class Trenitalia {
         return stationsList;
     }
 
-    public List<TravelSolution> oneWaySolutions(String autoCompletedOriginStation, String autocompletedDestinationStation, LocalDateTime travelSolutionsDateTime, int nAdults, int nChildren, boolean frecceSolutions, boolean regionalOnly) {
-        if (false) {
+    public List<TravelSolution> oneWaySolutions(String autoCompletedOriginStation, String autocompletedDestinationStation, LocalDateTime travelSolutionsDateTime, int nAdults, int nChildren, boolean frecceSolutions, boolean regionalOnly) throws TrenitaliaResponseException {
+        if (Stream.of(autocompletedDestinationStation, autoCompletedOriginStation, travelSolutionsDateTime).anyMatch(Objects::isNull) || autoCompletedOriginStation.isEmpty() || autocompletedDestinationStation.isEmpty()) {
             throw new TrenitaliaEmptyArgumentException();
         }
 
@@ -46,14 +50,14 @@ public class Trenitalia {
                 nChildren,
                 frecceSolutions,
                 regionalOnly);
-        System.out.println(apiEndpoint);
 
-        final List<TravelSolution> travelSolutionList = Arrays.stream(Unirest
-                        .get(apiEndpoint)
-                        .asObject(TravelSolution[].class)
-                        .getBody())
-                .collect(Collectors.toList());
-        return travelSolutionList;
+        final HttpResponse<TravelSolution[]> response = Unirest
+                .get(apiEndpoint)
+                .asObject(TravelSolution[].class);
+        if (response.getStatus() != 200) {
+            throw new TrenitaliaResponseException(response);
+        }
+        return Arrays.stream(response.getBody()).collect(Collectors.toList());
     }
 
 }
